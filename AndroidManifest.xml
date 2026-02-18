@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.denman.turn">
+
+    <!-- 明确声明支持的系统版本 -->
+    <!-- minSdkVersion 24 = Android 7.0 -->
+    <!-- targetSdkVersion 33 = Android 13 (适配你的手机) -->
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="33" />
+
+    <!-- 核心权限：允许在其他应用上层显示窗口 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 核心权限：前台服务保活 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+        <!-- Android 13+ 需要通知权限 (虽然前台服务会自动弹免打扰通知，但声明一下更规范) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="false"
+        android:label="Rotation Minimal"
+        android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+
+        <!-- 启动 Activity：负责申请权限 -->
+        <activity
+            android:name=".BootstrapActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 核心服务：负责控制旋转 -->
+        <!-- 移除了 android:foregroundServiceType 属性，确保低版本 SDK 也能编译 -->
+        <service
+            android:name=".RotationService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+    </application>
+
+</manifest>
