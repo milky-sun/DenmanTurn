@@ -22,7 +22,7 @@
 5. 纯 Shell 脚本直接调用 Android SDK 的底层命令行工具构筑。
 6. 当屏幕方向锁定后，如果没有新的点击事件，进程实际上处于极度休眠的挂起状态（Idle），不会占用 CPU 时间片，对电池的消耗在统计学上可以忽略不计。
 
-## 编译
+## 编译（假设使用Linux）
 
 0. 前置要求
     * 已安装 Android SDK Command-line Tools (包含 build-tools 和 platforms)。
