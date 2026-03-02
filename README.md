@@ -28,8 +28,6 @@
     * 已安装 Android SDK Command-line Tools (包含 build-tools 和 platforms)。
     * 使用 Android 11+ (API 30+) 的 SDK (可以在脚本内修改)。
 1. 克隆仓库
-git clone [https://github.com/YourName/DenmanTurn.git](https://github.com/YourName/DenmanTurn.git)
-cd DenmanTurn
 
 2. 修改 build.sh 中的 SDK_DIR 为你本地的 Android SDK 路径
 
